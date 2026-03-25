@@ -28,18 +28,18 @@ int isEqual(char str1[], char str2[]) {
  int main() {
     char str[100], str2[100], rev[100], sub[100];
 
-    // Input string
+    
     printf("Enter a string: ");
     gets(str);
 
-    // Length
+    
     printf("Length of string: %d\n", stringLength(str));
 
-    // Reverse
+    
     reverseString(str, rev);
     printf("Reversed string: %s\n", rev);
 
-    // Equality check
+    
     printf("Enter another string for comparison: ");
     gets(str2);
     if (isEqual(str, str2))
@@ -47,13 +47,13 @@ int isEqual(char str1[], char str2[]) {
     else
         printf("Strings are not equal\n");
 
-    // Palindrome check
+    
     if (isPalindrome(str))
         printf("String is a palindrome\n");
     else
         printf("String is not a palindrome\n");
 
-    // Substring check
+    
     printf("Enter substring to check: ");
     gets(sub);
     if (isSubstring(str, sub))
