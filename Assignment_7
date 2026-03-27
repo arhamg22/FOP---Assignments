@@ -27,7 +27,7 @@ int main() {
         s[i].total = 0;
         for (j = 0; j < 3; j++) {
             printf("Subject %d: ", j + 1);
-            scanf("%f", &s[i].marks[j]); // Use %f for float
+            scanf("%f", &s[i].marks[j]); 
             s[i].total += s[i].marks[j];
         }
 
