@@ -93,3 +93,63 @@ int matrix_add () {
 
         return 0;
     }
+   int inverse_matrix () {
+  printf("Inverse calculation for matrices larger than 2x2 is not implemented.\n");
+  int rows, cols, i, j;
+        printf("Enter number of rows: ");
+        scanf("%d", &rows);
+        printf("Enter number of columns: ");
+        scanf("%d", &cols);
+        int matrix[rows][cols];
+        printf("Enter elements of the matrix:\n");
+        for(i = 0; i < rows; i++) {
+            for(j = 0; j < cols; j++) {
+                printf("Element [%d][%d]: ", i + 1, j + 1);
+                scanf("%d", &matrix[i][j]);
+                }
+        }
+        printf("The matrix is:\n");
+        for(i = 0; i < rows; i++) {
+            for(j = 0; j < cols; j++) {
+                printf("%d ", matrix[i][j]);
+            }
+            printf("\n");
+        }
+  if(rows != cols) {
+            printf("Matrix is not square, inverse cannot be calculated.\n");
+        }
+
+        else if (rows > 2) {
+            printf("Inverse calculation for matrices larger than 2x2 is not implemented.\n");
+        }
+        else if(rows == 1) {
+            if(matrix[0][0] != 0) {
+                printf("Inverse of the matrix is: %f\n", 1.0 / matrix[0][0]);
+            } else {
+                printf("Matrix is singular, inverse does not exist.\n");
+            }
+        }
+        else if(rows == 2) {
+            int det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+            if(det == 0) {
+                printf("Matrix is singular, inverse does not exist.\n");
+            }
+            float inverse[2][2];
+            inverse[0][0] = matrix[1][1] / (float)det;
+            inverse[0][1] = -matrix[0][1] / (float)det;
+            inverse[1][0] = -matrix[1][0] / (float)det;
+            inverse[1][1] = matrix[0][0] / (float)det;
+
+            printf("Inverse of the matrix is:\n");
+            for(i = 0; i < 2; i++) {
+                for(j = 0; j < 2; j++) {
+                    printf("%f ", inverse[i][j]);
+                }
+                printf("\n");
+            }
+
+        }
+
+        return 0;
+    }
+    
