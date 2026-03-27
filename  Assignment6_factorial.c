@@ -4,7 +4,7 @@ int main() {
     long long factorial = 1;
     printf("Enter the positive number:");
     scanf("%d", &n);
-    for (i = 1; i <= n; ++i) {
+    for (i = 1; i <= n; i++) {
         factorial = factorial * i;
 
     }

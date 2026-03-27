@@ -39,4 +39,14 @@ int main() {
     else
         s[i].grade = 'F';
 }
+        printf("\nStudent Details:\n");
+        for(i=0; i<n; i++) {
+            printf("Name: %s\n", s[i].name);
+            printf("Roll Number: %d\n", s[i].roll);
+            printf("Total Marks: %.2f\n", s[i].total);
+            printf("Average Marks: %.2f\n", s[i].average);
+            printf("Grade: %c\n", s[i].grade);
+        }
+    return 0;
+}
     
