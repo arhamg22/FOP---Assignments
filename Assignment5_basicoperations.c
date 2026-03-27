@@ -152,4 +152,104 @@ int matrix_add () {
 
         return 0;
     }
-    
+     int magic_square () { 
+          int rows, cols, i, j;
+        printf("Enter number of rows: ");
+        scanf("%d", &rows);
+        printf("Enter number of columns: ");
+        scanf("%d", &cols);
+        int matrix[rows][cols];
+        printf("Enter elements of the matrix:\n");
+        for(i = 0; i < rows; i++) {
+            for(j = 0; j < cols; j++) {
+                printf("Element [%d][%d]: ", i + 1, j + 1);
+                scanf("%d", &matrix[i][j]);
+                }
+        }
+        printf("The matrix is:\n");
+        for(i = 0; i < rows; i++) {
+            for(j = 0; j < cols; j++) {
+                printf("%d ", matrix[i][j]);
+            }
+            printf("\n");
+        }
+if(rows != cols) {
+            printf("Matrix is not a magic square (not square matrix).\n");
+            return 0;
+        }
+        int magic_sum = 0;
+        for(j = 0; j < cols; j++) {
+            magic_sum += matrix[0][j];
+        }
+    int is_magic = 1;
+        for(i = 0; i < rows; i++) {
+            int row_sum = 0;
+            for(j = 0; j < cols; j++) {
+                row_sum += matrix[i][j];
+            }
+            if(row_sum != magic_sum) {
+                is_magic = 0;
+                break;
+            }
+        }
+   if(is_magic) {
+            for(j = 0; j < cols; j++) {
+                int col_sum = 0;
+                for(i = 0; i < rows; i++) {
+                    col_sum += matrix[i][j];
+                }
+                if(col_sum != magic_sum) {
+                    is_magic = 0;
+                    break;
+                }
+            }
+        }
+if(is_magic) {
+            int diag1_sum = 0, diag2_sum = 0;
+            for(i = 0; i < rows; i++) {
+                diag1_sum += matrix[i][i];
+                diag2_sum += matrix[i][rows - 1 - i];
+            }
+            if(diag1_sum != magic_sum || diag2_sum != magic_sum) {
+                is_magic = 0;
+            }
+        }
+
+        if(is_magic) {
+            printf("The matrix is a magic square with sum %d.\n", magic_sum);
+        } else {
+            printf("The matrix is not a magic square.\n");
+        }
+
+        return 0;
+    }int choice;
+
+    printf("Choose an operation to perform:\n");
+    printf("1. Addition of two matrices\n");
+    printf("2. Saddle point of a matrix\n");
+    printf("3. Inverse of a matrix\n");
+    printf("4. Magic Square of a matrix\n");
+    printf("Enter your choice (1-4): ");
+
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            matrix_add();
+            break;
+        case 2:
+            printf("You chose Saddle point of a matrix.\n");
+            saddle_point();
+            break;
+        case 3:
+            printf("You chose Inverse of a matrix.\n");
+            inverse_matrix();
+            break;
+        case 4:
+            printf("You chose Magic Square of a matrix.\n");
+            magic_square();
+            break;
+        default:
+            printf("Invalid choice. Please select a number between 1 and 4.\n");
+    }
+}
