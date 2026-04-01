@@ -1,61 +1,69 @@
 #include <stdio.h>
 
-struct student { 
-    char name[50];
-    int roll;
-    float marks[3]; 
-    float total;
-    float average;
-    char grade;
-}; 
-
 int main() {
-    int n, i, j;
+
+    struct Student {
+        char name[50];
+        int roll_number;
+        float m1, m2, m3, m4, m5;
+        float total;
+        float result;
+        char grade;
+    };
+
+    struct Student students[100];
+    int n;
+
     printf("Enter the number of students: ");
-    if (scanf("%d", &n) != 1) return 1;
+    scanf("%d", &n);
 
-    struct student s[n];
-
-    for (i = 0; i < n; i++) {
+    // Input and calculation
+    for (int i = 0; i < n; i++) {
         printf("\nEnter details for student %d:\n", i + 1);
+
         printf("Name: ");
-        scanf("%s", s[i].name);
-        printf("Roll number: ");
-        scanf("%d", &s[i].roll);
+        scanf("%s", students[i].name);
 
-        printf("Enter marks of 3 subjects:\n");
-        s[i].total = 0;
-        for (j = 0; j < 3; j++) {
-            printf("Subject %d: ", j + 1);
-            scanf("%f", &s[i].marks[j]); 
-            s[i].total += s[i].marks[j];
-        }
+        printf("Roll Number: ");
+        scanf("%d", &students[i].roll_number);
 
-        s[i].average = s[i].total / 3.0;
+        printf("Marks for 5 subjects: ");
+        scanf("%f %f %f %f %f",
+              &students[i].m1, &students[i].m2,
+              &students[i].m3, &students[i].m4,
+              &students[i].m5);
 
-        
-        if (s[i].average >= 90)
-            s[i].grade = 'A';
-        else if (s[i].average >= 80)
-            s[i].grade = 'B';
-        else if (s[i].average >= 70)
-            s[i].grade = 'C';
-        else if (s[i].average >= 60)
-            s[i].grade = 'D';
+        // Calculate total and average
+        students[i].total = students[i].m1 + students[i].m2 +
+                            students[i].m3 + students[i].m4 +
+                            students[i].m5;
+
+        students[i].result = students[i].total / 5;
+
+        // Assign grade
+        if (students[i].result >= 90)
+            students[i].grade = 'A';
+        else if (students[i].result >= 80)
+            students[i].grade = 'B';
+        else if (students[i].result >= 70)
+            students[i].grade = 'C';
+        else if (students[i].result >= 60)
+            students[i].grade = 'D';
         else
-            s[i].grade = 'F';
+            students[i].grade = 'F';
     }
 
-    printf("Student Details\n");
-    for (i = 0; i < n; i++) {
-        printf("\nName: %s\n", s[i].name);
-        printf("Roll Number: %d\n", s[i].roll);
-        printf("Total Marks: %.2f\n", s[i].total);
-        printf("Average Marks: %.2f\n", s[i].average);
-        printf("Grade: %c\n", s[i].grade);
+    // Display results
+    printf("\n--- Student Details ---\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("\nName: %s\n", students[i].name);
+        printf("Roll Number: %d\n", students[i].roll_number);
+        printf("Total Marks: %.2f\n", students[i].total);
+        printf("Average Marks: %.2f\n", students[i].result);
+        printf("Grade: %c\n", students[i].grade);
     }
 
     return 0;
 }
-
     
