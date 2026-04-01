@@ -10,14 +10,10 @@ int main() {
         float result;
         char grade;
     };
-
     struct Student students[100];
     int n;
-
     printf("Enter the number of students: ");
     scanf("%d", &n);
-
-    // Input and calculation
     for (int i = 0; i < n; i++) {
         printf("\nEnter details for student %d:\n", i + 1);
 
@@ -32,15 +28,14 @@ int main() {
               &students[i].m1, &students[i].m2,
               &students[i].m3, &students[i].m4,
               &students[i].m5);
-
-        // Calculate total and average
+        
         students[i].total = students[i].m1 + students[i].m2 +
                             students[i].m3 + students[i].m4 +
                             students[i].m5;
 
         students[i].result = students[i].total / 5;
 
-        // Assign grade
+        
         if (students[i].result >= 90)
             students[i].grade = 'A';
         else if (students[i].result >= 80)
@@ -53,7 +48,6 @@ int main() {
             students[i].grade = 'F';
     }
 
-    // Display results
     printf("\n--- Student Details ---\n");
 
     for (int i = 0; i < n; i++) {
